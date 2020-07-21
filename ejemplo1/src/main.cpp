@@ -21,7 +21,7 @@ StaticJsonDocument<512> horaActual;
 StaticJsonDocument<512> post_ejemplo;
 StaticJsonDocument<1024> get_ejemplo;
 
-const char *urlPost = "http://192.168.1.74/esp32-api/public/api/sensores";
+const char *urlPost = "http://192.168.1.74/esp32/public/api/sensores";
 const char *geturl = "http://192.168.99.100/app/public/api/resetpassword";
 
 void setup()
