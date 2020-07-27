@@ -49,8 +49,13 @@ void loop()
   horaActual["hora"] = reloj->timeStringBuff;
   horaActual["Sumatoria"] = sumatoria;
 
-  post_ejemplo["sensor"] = "temperatura";
-  post_ejemplo["valor"] = random(30);
+ String Direc[]={"Local","Jojutla","Galeana","Zacatepec",};
+  post_ejemplo["idpedidos"]=random(10);
+  post_ejemplo["Cantidad"]=random(10);
+  post_ejemplo["Tipo_Pedido"]= Direc[random(4)];
+  post_ejemplo["Estado_Pedido"]="PREPARACION";
+  post_ejemplo["FK_idProd"]=random(54);
+  post_ejemplo["FK_idCli"]=random(15);
 
   webInterface->webPOST(post_ejemplo, urlPost);
   //  webInterface->webGET(geturl);
