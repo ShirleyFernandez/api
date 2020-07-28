@@ -21,7 +21,7 @@ StaticJsonDocument<512> horaActual;
 StaticJsonDocument<512> post_ejemplo;
 StaticJsonDocument<1024> get_ejemplo;
 
-const char *urlPost = "http://192.168.1.74/esp32/public/api/sensores";
+const char *urlPost = "http://192.168.1.71/esp32-api/public/api/Pedidos";
 const char *geturl = "http://192.168.99.100/app/public/api/resetpassword";
 
 void setup()
@@ -49,13 +49,13 @@ void loop()
   horaActual["hora"] = reloj->timeStringBuff;
   horaActual["Sumatoria"] = sumatoria;
 
- String Direc[]={"Local","Jojutla","Galeana","Zacatepec",};
-  post_ejemplo["idpedidos"]=random(10);
-  post_ejemplo["Cantidad"]=random(10);
-  post_ejemplo["Tipo_Pedido"]= Direc[random(4)];
+ String Direc[]={"Local","Domicilio",};
+  post_ejemplo["idPedidos"]=1+rand()%(11+1-1);
+  post_ejemplo["Cantidad"]=random(1,10);
+  post_ejemplo["Tipo_Pedido"]= Direc[random(2)];
   post_ejemplo["Estado_Pedido"]="PREPARACION";
-  post_ejemplo["FK_idProd"]=random(54);
-  post_ejemplo["FK_idCli"]=random(15);
+  post_ejemplo["FK_idProd"]=random(1,54);
+  post_ejemplo["FK_idCli"]=random(1,30);
 
   webInterface->webPOST(post_ejemplo, urlPost);
   //  webInterface->webGET(geturl);
@@ -66,6 +66,5 @@ void loop()
   Serial.println("");
   Serial.println("");
   Serial.println("");
-  
   // serializeJson(horaActual,Serial);
 }
